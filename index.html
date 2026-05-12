@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+<title>Orbi RBR50 Traffic Monitoring</title>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+        text-align: center;
+    }
+    h1 {
+        margin-top: 20px;
+    }
+    .graph-container {
+        margin: 30px auto;
+        padding: 15px;
+        border: 1px solid #cccccc;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .footer {
+        margin-top: 40px;
+        font-size: 12px;
+        color: #666666;
+    }
+</style>
+</head>
+<body>
+
+<h1>Orbi RBR50 Traffic Monitoring</h1>
+
+<div class="graph-container">
+    <h2>Ultime 4 Ore</h2>
+    <img class="graph" src="images/orbi_traffic_1h.png" alt="Traffico Ultima Ora">
+    <img class="graph" src="images/orbi_uptime_1h.png" alt="Uptime Ultima Ora">
+</div>
+
+<div class="graph-container">
+    <h2>Ultimo Giorno</h2>
+    <img class="graph" src="images/orbi_traffic_1d.png" alt="Traffico Ultimo Giorno">
+    <img class="graph" src="images/orbi_uptime_1d.png" alt="Uptime Ultimo Giorno">
+</div>
+
+<div class="graph-container">
+    <h2>Ultima Settimana</h2>
+    <img class="graph" src="images/orbi_traffic_1w.png" alt="Traffico Ultima Settimana">
+    <img class="graph" src="images/orbi_uptime_1w.png" alt="Uptime Ultima Settimana">
+</div>
+
+<div class="graph-container">
+    <h2>Ultimo Mese</h2>
+    <img class="graph" src="images/orbi_traffic_1m.png" alt="Traffico Ultimo Mese">
+    <img class="graph" src="images/orbi_uptime_1m.png" alt="Uptime Ultimo Mese">
+</div>
+
+<div class="graph-container">
+    <h2>Ultimo Anno</h2>
+    <img class="graph" src="images/orbi_traffic_1y.png" alt="Traffico Ultimo Anno">
+    <img class="graph" src="images/orbi_uptime_1y.png" alt="Uptime Ultimo Anno">
+</div>
+
+<div class="graph-container">
+    <h2>Ultimi 5 Anni</h2>
+    <img class="graph" src="images/orbi_traffic_5y.png" alt="Traffico Ultimi 5 Anni">
+    <img class="graph" src="images/orbi_uptime_5y.png" alt="Uptime Ultimi 5 Anni">
+</div>
+
+<div class="footer">
+    Aggiornamento automatico ogni 60 secondi
+</div>
+
+<script>
+
+function refreshGraphs() {
+
+    const graphs = document.querySelectorAll(".graph");
+
+    graphs.forEach(function(img){
+
+        const base = img.src.split("?")[0];
+
+        img.src = base + "?v=" + Date.now();
+
+    });
+
+}
+
+setInterval(refreshGraphs, 60000);
+
+</script>
+
+</body>
+</html>
